@@ -32,8 +32,8 @@
     <%= f.select :category_id, @categories.collect{|category|[category.name, category.id]}, {include_blank:true} %>
   </div>
   <div class="field">
-    <%= f.label :product_type %><br>
-    <%= f.select :product_type, @product_types.collect{|product|[product.name, product.id]}, {include_blank:true} %>
+    <%= f.label :product_type_id %><br>
+    <%= f.select :product_type_id, @product_types.collect{|product|[product.name, product.id]}, {include_blank:true} %>
   </div>
   <div class="field">
     <%= f.label :vendor_id %><br>

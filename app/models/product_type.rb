@@ -1,4 +1,5 @@
 class ProductType < ActiveRecord::Base
+  has_many :products
   #se hace dinamico los scopes para las categorias
   uniq.map{|c| c.name}.each do |v|
    self.class.class_eval do
