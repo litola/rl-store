@@ -5,7 +5,18 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params.has_key? :category_id
+      @products = Product.where(category_id: params[:category_id])
+    else
+      @products = Product.all
+    end
+
+    if params.has_key? :q
+      @q = Product.ransack(params[:q])
+      @products=@q.result.includes(:category,:product_type)
+    else
+      @q = @products.ransack
+    end
   end
 
   # GET /products/1
@@ -70,6 +81,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:price, :name, :qty, :description, :category_id, :product_type, :vendor_id)
+      params.require(:product).permit(:price, :name, :qty, :description, :category_id, :product_type_id, :vendor_id)
     end
 end
