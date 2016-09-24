@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924163639) do
+ActiveRecord::Schema.define(version: 20160924164341) do
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "transaction_id"
+    t.string   "payment_type"
+    t.float    "total"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id"
+  add_index "payments", ["transaction_id"], name: "index_payments_on_transaction_id"
 
   create_table "products", force: :cascade do |t|
     t.float    "price"
