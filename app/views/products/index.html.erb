@@ -24,8 +24,8 @@
         <td><%= product.qty %></td>
         <td><%= product.description %></td>
         <td><%= product.category.name %></td>
-        <td><%= product.product_type %></td>
-        <td><%= product.vendor_id %></td>
+        <td><%= product.product_type.name %></td>
+        <td><%= product.vendor_id.name %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
